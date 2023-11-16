@@ -1,0 +1,33 @@
+{
+  "name": "@you/styles",
+  "type": "module",
+  "main": "build/cjs/main.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "vite": "./src/index.ts",
+      "import": "./build/esm/main.js",
+      "module": "./build/esm/main.js",
+      "require": "./build/cjs/main.js",
+      "types": "./build/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "yarn workspace @you/publish psl-pkgup --cwd $(pwd) --sourceDir ./src --dts --cleanOutDir --bundle --platform node"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.57.4",
+    "@you/design-tokens": "workspace:pkgs/design-tokens",
+    "pkg-up": "^3.1.0",
+    "unocss": "^0.57.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.18.9",
+    "@unocss/eslint-config": "^0.57.4",
+    "@unocss/preset-mini": "^0.57.4",
+    "@unocss/transformer-directives": "^0.57.4",
+    "@unocss/transformer-variant-group": "^0.57.4",
+    "unocss-preset-theme": "^0.11.0"
+  }
+}

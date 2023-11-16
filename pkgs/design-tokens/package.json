@@ -1,0 +1,28 @@
+{
+  "name": "@you/design-tokens",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./tokens.ts",
+  "types": "./build/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    "./tokens.css": "./tokens.css",
+    "./tokens.less": "./tokens.less",
+    "./tokens.ts": "./tokens.ts",
+    "./build/*": {
+      "import": "./build/esm/*",
+      "module": "./build/esm/*",
+      "require": "./build/cjs/*",
+      "types": "./build/*"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "generate": "yarn clean && yarn types && yarn style-dictionary build --config sd.config.js",
+    "clean": "yarn style-dictionary clean --config sd.config.js",
+    "types": "npx tsc -p . --excludeFiles sd.config.js --outDir build"
+  },
+  "dependencies": {
+    "style-dictionary": "^3.9.0"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  // BABEL: https://github.com/microsoft/TypeScript-Babel-Starter
+  // https://www.typescriptlang.org/docs/handbook/compiler-options.html
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "paths": {},
+    "types": ["./types"]
+  },
+  "include": ["apps/*/src", "pkgs/*/src", "types"],
+  "exclude": [
+    "**/node_modules/**/*",
+    "**/dist/**/*",
+    "**/build/**/*"
+  ],
+  "watchOptions": {
+    // Use native file system events for files and directories
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    // Poll files for updates more frequently
+    // when they're updated a lot.
+    "fallbackPolling": "dynamicPriority",
+    // Don't coalesce watch notification
+    "synchronousWatchDirectory": true,
+    // Finally, two additional settings for reducing the amount of possible
+    // files to track  work from these directories
+    "excludeDirectories": ["**/node_modules", "**/dist"]
+    // "excludeFiles": ["build/fileWhichChangesOften.ts"]
+  }
+}

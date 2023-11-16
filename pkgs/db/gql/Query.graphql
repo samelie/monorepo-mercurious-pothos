@@ -1,0 +1,5 @@
+query GetHumans($input: ProfileInput!) {
+  getHumans(input: $input) {
+    id
+  }
+}

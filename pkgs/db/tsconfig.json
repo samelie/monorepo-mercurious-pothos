@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "build",
+    "declaration": true,
+    "declarationDir": "build"
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src", "./types"]
+}

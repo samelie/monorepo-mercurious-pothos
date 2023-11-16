@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/constants.ts"],
+  "sourcesContent": ["import { parse } from \"path\";\nimport { sync as pkgUpSync } from \"pkg-up\";\nexport const pkgRootDir = parse(pkgUpSync({ cwd: __dirname }) || \"\").dir;"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,kBAAsB;AACtB,oBAAkC;AAC3B,IAAM,iBAAa,uBAAM,cAAAA,MAAU,EAAE,KAAK,UAAU,CAAC,KAAK,EAAE,EAAE;",
+  "names": ["pkgUpSync"]
+}

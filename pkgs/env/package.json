@@ -1,0 +1,25 @@
+{
+  "name": "@you/env",
+  "type": "module",
+  "main": "./build/cjs/main.js",
+  "module": "./build/esm/main.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./build/esm/main.js",
+      "module": "./build/esm/main.js",
+      "require": "./build/cjs/main.js",
+      "types": "./build/index.d.ts"
+    }
+  },
+  "dependencies": {
+    "dotenv-flow": "^3.3.0",
+    "pkg-up": "^3.1.0"
+  },
+  "scripts": {
+    "build": "yarn workspace @you/publish psl-pkgup --cwd $(pwd) --sourceDir ./src --dts --cleanOutDir --bundle --platform node"
+  },
+  "devDependencies": {
+    "@types/dotenv-flow": "^3.3.3"
+  }
+}

@@ -1,0 +1,4 @@
+dist
+cloud/*
+temp
+node_modules

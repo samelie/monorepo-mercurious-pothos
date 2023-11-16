@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-kysely"
+
+  output   = ""
+  fileName = "../generated/kysely-types.ts"
+}
+
+generator gen {
+  provider = "prisma-client-js"
+}
+
+// generator pothos {
+//   provider = "prisma-pothos-types"
+// }
+
+// generator pothos {
+//   provider     = "prisma-pothos-types"
+//   output       = "../generated/pothos-types.ts"
+//   clientOutput = "@prisma/client"
+// }
+
+// generator pothosCrud {
+//   provider            = "prisma-generator-pothos-codegen"
+//   generatorConfigPath = "./pothos.config.js"
+// }
+
+// generator graphql {
+//   provider = "graphql-schema-generator"
+//   // createCRUD = "true"
+//   output   = "../generated/prisma"
+// }
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProfileStatus {
+  PENDING
+  ACTIVE
+  DISABLED
+  SYSTEM_DEACTIVATED
+  SHARED
+}
+
+enum ProfileRole {
+  USER_ROLE_UNKNOWN
+  USER_ROLE_SHARED
+  USER_ROLE_VERIFIED
+  USER_ROLE_ADMIN
+}
+
+enum ProfileType {
+  HUMAN
+  SERVICE
+}
+
+enum Visibility {
+  VISIBILITY_PRIVATE
+  VISIBILITY_PUBLIC
+}
+
+enum MediaType {
+  MEDIA_TYPE_UNKNOWN
+  MEDIA_TYPE_AUDIO
+  MEDIA_TYPE_VIDEO
+  MEDIA_TYPE_AUDIO_VIDEO_DASH
+  MEDIA_TYPE_MPD
+  MEDIA_TYPE_AUDIO_MP3
+  MEDIA_TYPE_DASH_SIDX
+  MEDIA_TYPE_CHARTER_HTML
+  MEDIA_TYPE_VIDEO_FRAMES
+}
+
+// supabas holds its own auth system
+model Profile {
+  id             String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  hashedPassword String
+  name           String
+  firstName      String
+  lastName       String
+  username       String
+  email          String
+  organization   String?
+  bio            String?
+  providerId     String?
+  acl            String?
+  status         ProfileStatus @default(PENDING)
+  type           ProfileType   @default(SERVICE)
+  role           ProfileRole   @default(USER_ROLE_UNKNOWN)
+
+  projects Project[]
+  medias   Media[]
+}
+
+model Project {
+  id                String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name              String
+  revisionId        String
+  creatorId         String     @db.Uuid
+  creator           Profile    @relation(fields: [creatorId], references: [id])
+  description       String
+  premiereProjectId String
+  visibility        Visibility
+}
+
+model Media {
+  id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  uri         String
+  revisionId  String
+  mimeType    String
+  transcribed Boolean
+  creatorId   String     @db.Uuid
+  creator     Profile    @relation(fields: [creatorId], references: [id])
+  visibility  Visibility
+  type        MediaType
+}

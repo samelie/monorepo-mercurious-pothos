@@ -1,0 +1,31 @@
+{
+  "name": "@you/web",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "bin": {
+    "dev": "./scripts/dev.mjs"
+  },
+  "scripts": {
+    "dev:server": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@you/env": "workspace:pkgs/env",
+    "@you/publish": "workspace:pkgs/publish",
+    "@you/styles": "workspace:pkgs/styles",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "unocss": "^0.57.4",
+    "vue": "^3.3.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.4.1",
+    "tsx": "^4.1.2",
+    "typescript": "5.2.2",
+    "vite": "^4.5.0",
+    "vue-tsc": "^1.8.22",
+    "windicss": "^3.5.6",
+    "zx": "^7.2.3"
+  }
+}

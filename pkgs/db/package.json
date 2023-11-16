@@ -1,0 +1,73 @@
+{
+  "name": "@you/db",
+  "type": "module",
+  "scripts": {
+    "dev:types-gen": "./types-gen.mjs",
+    "cg2": "./codegen.mts",
+    "cg": "graphql-code-generator --config graphql-codegen.ts",
+    "dev:db:push": "dotenv -e ./.prisma/.env.development -- yarn prisma db push --schema ./prisma/schema.prisma",
+    "dev:db:migrate": "dotenv -e ./.prisma/.env.development -- yarn prisma migrate dev --schema ./prisma/schema.prisma --name dev_migration",
+    "dev:db:seed": "dotenv -e ./.prisma/.env.development -- yarn prisma db seed"
+  },
+  "devDependencies": {
+    "@graphql-codegen/schema-ast": "^4.0.0",
+    "@graphql-codegen/typescript-vue-urql": "^3.0.0",
+    "@ngneat/falso": "^7.1.1",
+    "@pothos/plugin-scope-auth": "^3.20.0",
+    "@pothos/plugin-simple-objects": "^3.7.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/pg": "^8.10.9",
+    "@types/prettier": "^3.0.0",
+    "@types/uuid": "^9.0.7",
+    "dotenv-cli": "^7.3.0",
+    "fastify": "^4.24.3",
+    "fastify-plugin": "^4.5.1",
+    "kysely": "^0.26.3",
+    "kysely-codegen": "^0.11.0",
+    "mercurius": "^13.2.2",
+    "pg": "^8.11.3",
+    "prettier": "^3.1.0",
+    "prisma": "^5.6.0",
+    "prisma-generator-pothos-codegen": "^0.6.3",
+    "prisma-kysely": "^1.7.1",
+    "tsx": "^4.1.2",
+    "typescript": "5.2.2",
+    "uuid": "^9.0.1",
+    "zx": "^7.2.3"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^9.2.0",
+    "@fastify/cors": "^8.4.1",
+    "@fastify/redis": "^6.1.1",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@pothos/core": "^3.38.0",
+    "@pothos/plugin-prisma": "^3.61.0",
+    "@prisma/client": "^5.6.0",
+    "bcryptjs": "^2.4.3",
+    "graphql": "^16.8.1",
+    "mercurius-auth": "^4.0.0",
+    "mercurius-cache": "^6.0.0",
+    "mercurius-codegen": "^5.0.3",
+    "mercurius-logging": "^1.4.0",
+    "paseto": "^3.1.4",
+    "urql": "^4.0.6"
+  },
+  "main": "./src/index.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    "./generated/*": {
+      "import": "./generated/*.ts"
+    },
+    ".": {
+      "import": "./src/index.ts",
+      "module": "./build/main.js",
+      "require": "./build/main.js",
+      "types": "./build/index.d.ts"
+    }
+  },
+  "prisma": {
+    "seed": "./dev/seed.ts"
+  }
+}

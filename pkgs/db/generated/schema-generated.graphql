@@ -1,0 +1,26 @@
+type Human {
+  id: ID!
+}
+
+input LoginInput {
+  email: String
+  password: String
+  username: String
+}
+
+type LoginResponse {
+  token: String!
+}
+
+type Mutation {
+  login(input: LoginInput!): LoginResponse
+}
+
+input ProfileInput {
+  id: String
+}
+
+type Query {
+  getHumans(input: ProfileInput!): [Human!]!
+  getMedia(input: ProfileInput!): [Human!]!
+}

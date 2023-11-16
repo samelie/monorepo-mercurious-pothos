@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/main.ts"],
+  "sourcesContent": ["import dotenv from 'dotenv-flow'\nimport { join, parse } from 'node:path'\nimport { fileURLToPath } from 'node:url'\nimport { sync as pkgUpSync } from 'pkg-up'\nconst dirname = parse(fileURLToPath(import.meta.url)).dir\nexport const pkgRootDir = parse(pkgUpSync({ cwd: dirname }) || '').dir\nconst p = join(pkgRootDir, '../../', '.config')\ndotenv.config({ path: p })\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,yBAAmB;AACnB,uBAA4B;AAC5B,sBAA8B;AAC9B,oBAAkC;AAClC,IAAM,cAAU,4BAAM,+BAAc,cAAe,CAAC,EAAE;AAC/C,IAAM,iBAAa,4BAAM,cAAAA,MAAU,EAAE,KAAK,QAAQ,CAAC,KAAK,EAAE,EAAE;AACnE,IAAM,QAAI,uBAAK,YAAY,UAAU,SAAS;AAC9C,mBAAAC,QAAO,OAAO,EAAE,MAAM,EAAE,CAAC;",
+  "names": ["pkgUpSync", "dotenv"]
+}

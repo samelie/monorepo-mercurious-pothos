@@ -1,0 +1,43 @@
+{
+  "name": "@you/eslint",
+  "type": "module",
+  "scripts": {
+    "build": "yarn workspace @you/publish psl-pkgup --cwd $(pwd) --sourceDir ./src --dts --cleanOutDir --bundle --platform node"
+  },
+  "main": "build/cjs/main.js",
+  "types": "./build/main.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "vite": "./src/index.ts",
+      "import": "./build/esm/main.js",
+      "module": "./build/esm/main.js",
+      "require": "./build/cjs/main.js",
+      "types": "./build/main.d.ts"
+    }
+  },
+  "dependencies": {
+    "@eslint/js": "^8.53.0",
+    "@types/eslint": "^8.44.7",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-define-config": "^1.24.1",
+    "eslint-plugin-antfu": "^0.39.8",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsonc": "^2.10.0",
+    "eslint-plugin-markdown": "^3.0.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-unicorn": "^49.0.0",
+    "eslint-plugin-vue": "^9.18.1",
+    "eslint-plugin-yml": "^1.10.0",
+    "globals": "^13.23.0",
+    "jsonc-eslint-parser": "^2.4.0",
+    "local-pkg": "^0.5.0",
+    "prettier": "^3.1.0",
+    "vue-eslint-parser": "^9.3.2",
+    "yaml-eslint-parser": "^1.2.2"
+  }
+}

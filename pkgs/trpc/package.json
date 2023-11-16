@@ -1,0 +1,35 @@
+{
+  "name": "@you/trpc",
+  "type": "module",
+  "dependencies": {
+    "@fastify/cookie": "^9.2.0",
+    "@fastify/cors": "^8.4.1",
+    "@trpc/client": "^10.43.3",
+    "@trpc/server": "^10.43.3",
+    "@you/db": "workspace:pkgs/db",
+    "@you/env": "workspace:pkgs/env",
+    "bcryptjs": "^2.4.3",
+    "fastify": "^4.24.3",
+    "fastify-plugin": "^4.5.1",
+    "superjson": "^1.13.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./fastify/*": {
+      "import": "./fastify/*.ts",
+      "types": "./fastify/*.ts"
+    },
+    "./client/*": {
+      "import": "./client/*.ts",
+      "types": "./client/*.ts"
+    },
+    "./server/*": {
+      "import": "./server/*.ts",
+      "types": "./server/*.ts"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "@you/publish",
+  "type": "module",
+  "scripts": {
+    "psl-pkgup": "./pkgup-esbuild.mjs",
+    "build": "yarn psl-pkgup --cwd $(pwd) --sourceDir ./src --dts --cleanOutDir --bundle --platform node"
+  },
+  "dependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@you/env": "workspace:pkgs/env",
+    "@you/styles": "workspace:pkgs/styles",
+    "connect-history-api-fallback": "^2.0.0",
+    "cosmiconfig": "^8.3.6",
+    "esbuild": "^0.19.5",
+    "fast-glob": "^3.3.2",
+    "lodash-es": "^4.17.21",
+    "pkg-up": "^3.1.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "tsx": "^4.1.2",
+    "typescript": "5.2.2",
+    "vite": "^4.5.0",
+    "vite-plugin-node-polyfills": "^0.16.0",
+    "vitest": "^0.34.6",
+    "yargs": "^17.7.2"
+  },
+  "main": "build/cjs/main.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "vite": "./src/index.ts",
+      "import": "./build/esm/main.js",
+      "module": "./build/esm/main.js",
+      "require": "./build/cjs/main.js",
+      "types": "./build/index.d.ts"
+    }
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.201",
+    "@types/lodash-es": "^4.17.11",
+    "ts-toolbelt": "^9.6.0"
+  }
+}
